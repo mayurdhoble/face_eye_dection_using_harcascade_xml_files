@@ -4,14 +4,7 @@ import streamlit as st
 
 #st.header("Face & Eye dector using pretrained Cascade Classifiers with Open cv2")
 def detect_faces_and_eyes(image):
-  """Detects faces and eyes in an image and returns the modified image.
 
-  Args:
-      image_path: Path to the image file.
-
-  Returns:
-      A NumPy array representing the image with detected faces and eyes marked.
-  """
   face_classifier = cv2.CascadeClassifier(r"C:\Users\dell\OneDrive\Documents\harcascade\Haarcascades\haarcascade_frontalface_default.xml")
   eye_classifier = cv2.CascadeClassifier(r"C:\Users\dell\OneDrive\Documents\harcascade\Haarcascades\haarcascade_eye.xml")
   img = cv2.imread(image)
@@ -35,7 +28,7 @@ if uploaded_file is not None:
     image_data = np.array(bytearray(uploaded_file.read()), dtype=np.uint8)
     image = cv2.imdecode(image_data, cv2.IMREAD_COLOR)
 
-    # Save the image with a temporary filename
+    #we save the image with a temporary filename
     temp_filename = f"uploaded_image.{uploaded_file.name.split('.')[-1]}"
     cv2.imwrite(temp_filename, image)
 
